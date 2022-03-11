@@ -1,4 +1,4 @@
-import Body from "../components/richText";
+import Body from "../../components/richText";
 
 //page fields
 
