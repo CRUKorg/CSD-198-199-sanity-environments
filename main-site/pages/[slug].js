@@ -106,6 +106,7 @@ export default function Page({ data, preview }) {
   // This is extremely important as you can't ever rely on a single field
   // of data existing when Editors are creating new documents.
   // It'll be completely blank when they start!
+  // REMEMBER OPTIONAL CHAINING!
   return (
     <div style={{ maxWidth: `20rem`, padding: `1rem` }}>
       {preview && <Link href="/api/exit-preview">Preview Mode Activated!</Link>}
