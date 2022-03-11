@@ -3,7 +3,7 @@ import { MdLink } from "react-icons/md";
 export default {
   name: "race_for_life_section",
   type: "document",
-  title: "Main Site - Section",
+  title: "Race - Section",
   icon: MdLink,
   fields: [
     {

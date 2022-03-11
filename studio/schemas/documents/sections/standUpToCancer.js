@@ -3,7 +3,7 @@ import { MdLink } from "react-icons/md";
 export default {
   name: "stand_up_to_cancer_section",
   type: "document",
-  title: "Main Site - Section",
+  title: "Stand Up - Section",
   icon: MdLink,
   fields: [
     {
