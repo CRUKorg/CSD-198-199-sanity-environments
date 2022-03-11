@@ -40,7 +40,7 @@ function filterDataToSingleItem(data, preview) {
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[defined(uid.current)][].uid.current`;
+  const allSlugsQuery = groq`*[defined(uid.current) && _type =="main_site_page"][].uid.current`;
   const pages = await getClient().fetch(allSlugsQuery);
 
   return {
@@ -110,7 +110,7 @@ export default function Page({ data, preview }) {
     <div style={{ maxWidth: `20rem`, padding: `1rem` }}>
       {preview && <Link href="/api/exit-preview">Preview Mode Activated!</Link>}
       {page?.title && <h1>{page.title}</h1>}
-      <BlockContent blocks={page.body} />
+      <BlockContent blocks={page?.body} />
     </div>
   );
 }
