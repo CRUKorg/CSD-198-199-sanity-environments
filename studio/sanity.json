@@ -5,7 +5,7 @@
   },
   "api": {
     "projectId": "fiebkckn",
-    "dataset": "production"
+    "dataset": "multisite"
   },
   "plugins": [
     "@sanity/base",
@@ -16,9 +16,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
