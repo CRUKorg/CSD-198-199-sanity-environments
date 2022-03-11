@@ -3,40 +3,22 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // Documents
-import Page from "./documents/page";
-import Event from "./documents/event";
-import Section from "./documents/section";
-import Homepage from "./documents/homepage";
-// Components
-import hero from "./components/hero";
-import imageSection from "./components/imageSection";
-import body from "./components/richText";
-import figure from "./components/figure";
-import cta from "./components/cta";
-import simplePortableText from "./components/simplePortableText";
-import link from "./components/link";
-import internalLink from "./components/internalLink";
-import researcher from "./documents/researcher";
-// Site Settings
-import siteSettings from "./siteSettings";
-import colours from "./colours";
+import { default as mainSitePage } from "./documents/pages/mainsite";
+import { default as raceForLifePage } from "./documents/pages/raceForLife";
+import { default as standUpToCancerPage } from "./documents/pages/standUpToCancer";
+
+import { default as mainSiteSection } from "./documents/sections/mainsite";
+import { default as raceForLifeSection } from "./documents/sections/raceForLife";
+import { default as standUpToCancerSection } from "./documents/sections/standUpToCancer";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
-    Homepage,
-    Page,
-    researcher,
-    Event,
-    Section,
-    hero,
-    imageSection,
-    figure,
-    body,
-    cta,
-    link,
-    internalLink,
-    siteSettings,
-    colours,
+    mainSitePage,
+    mainSiteSection,
+    raceForLifePage,
+    raceForLifeSection,
+    standUpToCancerPage,
+    standUpToCancerSection,
   ]),
 });
