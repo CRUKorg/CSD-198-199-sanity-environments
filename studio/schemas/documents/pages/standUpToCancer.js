@@ -11,9 +11,9 @@ export default {
     ...page,
     {
       title: "Section",
-      name: "stand_to_to_cancer_section",
+      name: "stand_up_to_cancer_section",
       type: "reference",
-      to: [{ type: "stand_to_to_cancer_section" }],
+      to: [{ type: "stand_up_to_cancer_section" }],
     },
   ],
 };

@@ -1,8 +1,8 @@
 // Page document type.
 
 // Components
-import Body from "../components/richText";
-import page from "./shared/page";
+import Body from "../../components/richText";
+import page from "../shared/page";
 export default {
   title: "Main Site - Page",
   name: "main_site_page",
