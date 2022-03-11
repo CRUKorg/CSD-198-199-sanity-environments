@@ -1,7 +1,7 @@
 import { MdLink } from "react-icons/md";
 
 export default {
-  name: "mainsite_section",
+  name: "main_site_section",
   type: "document",
   title: "Main Site - Section",
   icon: MdLink,
@@ -27,7 +27,7 @@ export default {
       description: "Select the landing page for this section.",
       to: [
         {
-          type: "mainsite_page",
+          type: "main_site_page",
         },
       ],
     },
