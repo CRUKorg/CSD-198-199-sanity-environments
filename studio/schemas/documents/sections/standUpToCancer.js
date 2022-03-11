@@ -1,9 +1,9 @@
-import { MdLink} from "react-icons/md";
+import { MdLink } from "react-icons/md";
 
 export default {
-  name: "section",
+  name: "stand_up_to_cancer_section",
   type: "document",
-  title: "Section",
+  title: "Main Site - Section",
   icon: MdLink,
   fields: [
     {
@@ -17,7 +17,7 @@ export default {
       description: "Select the parent section.",
       to: [
         {
-          type: "section",
+          type: "stand_up_to_cancer_section",
         },
       ],
     },
@@ -27,7 +27,7 @@ export default {
       description: "Select the landing page for this section.",
       to: [
         {
-          type: "page",
+          type: "stand_up_to_cancer_page",
         },
       ],
     },
