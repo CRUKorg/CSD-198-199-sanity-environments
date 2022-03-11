@@ -1,12 +1,8 @@
+import Body from "../components/richText";
+
 //page fields
 
 const page = [
-  {
-    title: "Section",
-    name: "section",
-    type: "reference",
-    to: [{ type: "section" }],
-  },
   {
     title: "Title",
     name: "title",
