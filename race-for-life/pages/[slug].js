@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePreviewSubscription } from "../lib/sanity";
 import { getClient } from "../lib/sanity.server";
 import BlockContent from "@sanity/block-content-to-react";
+import { config } from "../lib/config";
 
 function blocksToText(blocks) {
   return blocks.map((block) =>
@@ -41,7 +42,7 @@ function filterDataToSingleItem(data, preview) {
  */
 export async function getStaticPaths() {
   const allSlugsQuery = groq`*[defined(uid.current) && _type=="race_for_life_page"][].uid.current`;
-  const pages = await getClient().fetch(allSlugsQuery);
+  const pages = await getClient(config).fetch(allSlugsQuery);
 
   return {
     paths: pages.map((slug) => `/${slug}`),
@@ -66,7 +67,7 @@ export async function getStaticProps({ params, preview = false }) {
   console.log(params);
   const query = groq`*[_type == "race_for_life_page" && uid.current == $slug]`;
   const queryParams = { slug: params.slug };
-  const data = await getClient(preview).fetch(query, queryParams);
+  const data = await getClient(config, preview).fetch(query, queryParams);
 
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };

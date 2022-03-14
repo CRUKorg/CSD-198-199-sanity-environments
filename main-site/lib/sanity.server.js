@@ -11,7 +11,7 @@ export const previewClient = createClient({
   ...config,
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
-  dataset: process.env.SANITY_DATASET,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 });
 
 // Helper function for easily switching between normal client and preview client
