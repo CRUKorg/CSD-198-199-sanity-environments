@@ -8,7 +8,7 @@ export default function resolveProductionUrl(doc) {
 
   switch (doc._type) {
     case 'main_site_page':
-      remoteUrl = `https://csd-198-199-mainsite.vercel.app/`
+      remoteUrl = `https://feature-amplify-lambda-env-vars.d3vsky5khu9n46.amplifyapp.com/`
       break
     case 'race_for_life_page':
       remoteUrl = `https://csd-198-199-raceforlife.vercel.app/`
