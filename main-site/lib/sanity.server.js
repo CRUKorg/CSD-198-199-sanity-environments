@@ -10,8 +10,8 @@ export const sanityClient = createClient(config);
 export const previewClient = createClient({
   ...config,
   useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  token: 'sk0XLbAz0MP6TVjACuu0HFOnNotHio0YFgVt1gq1jRCBfTRJji1bIBJ5j0oQURvSpwMbzeyDmG77FX6BPomLv6RJ6skMtkhTal2kUqJ2dK8bhjIFVqboGAOQULHa6qexwHFpSDVaaSI2neGKGMmia0oCPyA6jIoAzklNq2dBrseOXTpR3KJu',
+  dataset: 'production',
 });
 
 // Helper function for easily switching between normal client and preview client
