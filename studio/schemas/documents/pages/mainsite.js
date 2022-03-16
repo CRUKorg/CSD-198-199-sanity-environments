@@ -15,5 +15,11 @@ export default {
       type: "reference",
       to: [{ type: "main_site_section" }],
     },
+    {
+      title: "Test Section",
+      name: "test_section",
+      type: "string",
+      readOnly: true,
+    },
   ],
 };
