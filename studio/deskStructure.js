@@ -7,4 +7,4 @@ import sections from "./desks/sections";
 export default () =>
   S.list()
     .title("Websites")
-    .items([mainSite(), raceForLife(), standUpToCancer(), sections()]);
+    .items([mainSite(), raceForLife(), standUpToCancer()]);

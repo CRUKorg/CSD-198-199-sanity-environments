@@ -16,7 +16,7 @@ export default {
       name: "testSite",
       type: "string",
       readOnly: true,
-      initialValue: () => {
+      /*initialValue: () => {
         //window.location.pathname;
         //return "";
         const desk = resolveDesk(window.location.pathname);
@@ -24,7 +24,7 @@ export default {
           throw "Error!";
         }
         return desk;
-      },
+      },*/
     },
     {
       name: "section",

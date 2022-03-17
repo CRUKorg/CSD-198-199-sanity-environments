@@ -26,4 +26,12 @@ export default [
       site: "raceForLife",
     },
   }),
+  /*T.template({
+    id: "section-by-site",
+    title: "Section By Site",
+    schemaType: "section",
+    value: (params) => ({
+      testSite: params.siteId,
+    }),
+  }),*/
 ];
