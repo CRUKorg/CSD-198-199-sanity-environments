@@ -1,7 +1,7 @@
 import T from "@sanity/base/initial-value-template-builder";
 
 export default [
-  ...T.defaults(),
+  //...T.defaults(),
   T.template({
     id: "mainSite",
     title: "Main Site - Page",
@@ -26,12 +26,12 @@ export default [
       site: "raceForLife",
     },
   }),
-  /*T.template({
-    id: "section-by-site",
+  T.template({
+    id: "sectionBySite",
     title: "Section By Site",
     schemaType: "section",
     value: (params) => ({
       testSite: params.siteId,
     }),
-  }),*/
+  }),
 ];

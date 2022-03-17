@@ -8,33 +8,19 @@ const page = [
     type: "string",
     readOnly: true,
   },
-  {
+  /*{
     title: "Test Field",
     name: "testField",
     type: "string",
     readOnly: true,
     initialValue: () => {
-      /*console.log(window.location.pathname.split(";")[0].split("/").pop());
-      if (window.location.pathname) {
-        const deskNameParam = window.location.pathname.split(";");
-        let deskName = "";
-        if (deskNameParam.length) {
-          deskName = deskNameParam[0].split("/").pop();
-          return deskName;
-        } else {
-          throw "Error!";
-        }
-      } else {
-        throw "Error!";
-      }*/
       const desk = resolveDesk(window.location.pathname);
       if (!desk) {
         throw "Error!";
       }
       return desk;
-      //return "";
     },
-  },
+  },*/
   {
     title: "Section",
     name: "section",
@@ -52,7 +38,7 @@ const page = [
             params: { mySite: document.site, pageType: "page" },
           };
         } else {
-          return;
+          return {};
         }
       },
     },
