@@ -2,17 +2,12 @@ import S from "@sanity/desk-tool/structure-builder";
 import { MdComputer } from "react-icons/md";
 const standUpToCancer = () =>
   S.listItem()
-    .title("Stand Up To Cancer")
-    .icon(MdComputer)
+    .title("SU2C")
+    .schemaType("page")
     .child(
-      S.list()
-        .title("Stand Up To Cancer")
-        .items([
-          ...S.documentTypeListItems().filter(
-            (item) =>
-              item.getId() == "stand_up_to_cancer_page" ||
-              item.getId() == "stand_up_to_cancer_section"
-          ),
-        ])
+      S.documentList()
+        .title("SU2C Pages")
+        .filter('_type == "page" && site == "standUpToCancer"')
+        .initialValueTemplates([S.initialValueTemplateItem("standUpToCancer")])
     );
 export default standUpToCancer;

@@ -2,17 +2,12 @@ import S from "@sanity/desk-tool/structure-builder";
 import { MdComputer } from "react-icons/md";
 const raceForLife = () =>
   S.listItem()
-    .title("Race for life")
-    .icon(MdComputer)
+    .title("Race for Life")
+    .schemaType("page")
     .child(
-      S.list()
-        .title("Race for life")
-        .items([
-          ...S.documentTypeListItems().filter(
-            (item) =>
-              item.getId() == "race_for_life_page" ||
-              item.getId() == "race_for_life_section"
-          ),
-        ])
+      S.documentList()
+        .title("Race for Life Pages")
+        .filter('_type == "page" && site == "raceForLife"')
+        .initialValueTemplates([S.initialValueTemplateItem("raceForLife")])
     );
 export default raceForLife;

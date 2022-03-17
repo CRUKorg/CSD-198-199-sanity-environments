@@ -2,12 +2,13 @@ import S from "@sanity/desk-tool/structure-builder";
 import { MdComputer } from "react-icons/md";
 const mainSite = () =>
   S.listItem()
-    .title("Pages by Main Site section!")
-    .schemaType("main_site_page")
+    .title("Main Site")
+    .schemaType("page")
     .child(
       S.documentList()
-        .title("Main site pages!")
-        .filter('_type == "main_site_page" && test_section == "mainSite"')
+        .title("Main Site Pages")
+        .filter('_type == "page" && site == "mainSite"')
+        .initialValueTemplates([S.initialValueTemplateItem("mainSite")])
     );
 
 export default mainSite;
