@@ -32,10 +32,6 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
-    },
-    {
-      "name": "part:@sanity/base/initial-value-templates",
-      "path": "./initialValues.js"
     }
   ]
 }
