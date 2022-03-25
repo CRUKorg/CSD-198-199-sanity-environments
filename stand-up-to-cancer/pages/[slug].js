@@ -41,12 +41,19 @@ function filterDataToSingleItem(data, preview) {
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[defined(uid.current) && _type == "stand_up_to_cancer_page"][].uid.current`;
+  const allSlugsQuery = groq`*[_type == "page" && site=="standUpToCancer" && section._ref in *[_type=="section" && sectionID=="home"]._id ]{
+  _id,
+  uid
+}`;
   const pages = await getClient(config).fetch(allSlugsQuery);
 
+  const paths = pages.map((slug) => {
+    return { params: { slug: slug.uid.current.split("/").pop() } };
+  });
+
   return {
-    paths: pages.map((slug) => `/${slug}`),
-    fallback: "blocking",
+    paths,
+    fallback: true,
   };
 }
 
@@ -64,20 +71,18 @@ export async function getStaticPaths() {
  * It does not need to be set or changed here
  */
 export async function getStaticProps({ params, preview = false }) {
-  const query = groq`*[_type == "stand_up_to_cancer_page" && uid.current == $slug]`;
-  const queryParams = { slug: params.slug };
+  console.log(params);
+  const query = groq`*[_type == "page" && site=="standUpToCancer" && uid.current == $slug] { title, _id, uid, body}`;
+  const queryParams = { slug: `stand-up-to-cancer/${params.slug}` };
+  console.log(queryParams);
   const data = await getClient(config, preview).fetch(query, queryParams);
-
+  console.log("d", data);
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };
 
   // Helper function to reduce all returned documents down to just one
   const page = filterDataToSingleItem(data, preview);
-  if (!page) {
-    return {
-      notFound: true,
-    };
-  }
+  console.log(page);
   return {
     props: {
       // Pass down the "preview mode" boolean to the client-side
