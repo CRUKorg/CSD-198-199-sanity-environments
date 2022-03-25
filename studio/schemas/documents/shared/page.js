@@ -2,25 +2,25 @@ import Body from "../../components/richText";
 //page fields
 import { resolveDesk } from "../../util";
 const page = [
+  /*{
+    title: "Site",
+    name: "site",
+    type: "string",
+    readOnly: true,
+  },*/
   {
     title: "Site",
     name: "site",
     type: "string",
     readOnly: true,
-  },
-  /*{
-    title: "Test Field",
-    name: "testField",
-    type: "string",
-    readOnly: true,
     initialValue: () => {
       const desk = resolveDesk(window.location.pathname);
-      if (!desk) {
+      /*if (!desk) {
         throw "Error!";
-      }
+      }*/
       return desk;
     },
-  },*/
+  },
   {
     title: "Section",
     name: "section",
@@ -34,8 +34,8 @@ const page = [
         if (document.site) {
           console.log(document);
           return {
-            filter: "_type == $pageType && site == $mySite",
-            params: { mySite: document.site, pageType: "page" },
+            filter: "_type == $pageType && site == $site",
+            params: { site: document.site, pageType: "page" },
           };
         } else {
           return {};
