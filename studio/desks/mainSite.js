@@ -3,7 +3,7 @@ import { MdComputer } from "react-icons/md";
 export default () =>
   S.listItem()
     .title("Main site")
-    .id("mainSiteParent")
+    .id("mainSite")
     .icon(MdComputer)
     .child(
       S.list()
@@ -13,22 +13,16 @@ export default () =>
           S.listItem()
             .title("All Content")
             .child(
-              S.documentList()
+              S.documentTypeList("page")
                 .title("All mainsite pages")
-                .filter('_type == "page" && site == "mainSite"')
-                .initialValueTemplates([S.initialValueTemplateItem("mainSite")])
+                .filter('site == "mainSite" && _type== "page"')
             ),
           S.listItem()
             .title("Sections")
             .child(
-              S.documentList()
+              S.documentTypeList("section")
                 .title("All sections")
-                .filter('_type == "section" && testSite == "mainSite"')
-                .initialValueTemplates([
-                  S.initialValueTemplateItem("sectionBySite", {
-                    siteId: "mainSite",
-                  }),
-                ])
+                .filter('site == "mainSite" && _type== "section"')
             ),
         ])
     );
