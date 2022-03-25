@@ -30,14 +30,6 @@ export default {
           type: "section",
         },
       ],
-      /*options: {
-        filter: ({ document }) => {
-          // Always make sure to check for document properties
-          // before attempting to use them
-          console.log(document);
-          return {};
-        },
-      },*/
       options: {
         filter: ({ document }) => {
           // Always make sure to check for document properties
