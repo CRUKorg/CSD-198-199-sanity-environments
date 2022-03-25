@@ -13,18 +13,13 @@ export default {
     },
     {
       title: "Site",
-      name: "testSite",
+      name: "site",
       type: "string",
       readOnly: true,
-      /*initialValue: () => {
-        //window.location.pathname;
-        //return "";
+      initialValue: () => {
         const desk = resolveDesk(window.location.pathname);
-        if (!desk) {
-          throw "Error!";
-        }
         return desk;
-      },*/
+      },
     },
     {
       name: "section",
@@ -49,8 +44,8 @@ export default {
           // before attempting to use them
           if (document.site) {
             return {
-              filter: "_type == $pageType && testSite == $site",
-              params: { site: document.testSite, pageType: "section" },
+              filter: "_type == $pageType && site == $site",
+              params: { site: document.site, pageType: "section" },
             };
           } else {
             return {};
@@ -75,7 +70,7 @@ export default {
           if (document.testSite) {
             return {
               filter: "_type == $pageType && site == $site",
-              params: { site: document.testSite, pageType: "page" },
+              params: { site: document.site, pageType: "page" },
             };
           } else {
             return {};
