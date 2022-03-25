@@ -3,13 +3,14 @@ import { resolveDesk } from "../util";
 export default {
   name: "section",
   type: "document",
-  title: "Main Site - Section",
+  title: "Section",
   icon: MdLink,
   fields: [
     {
-      title: "Title",
       name: "title",
+      title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       title: "Site",
@@ -23,44 +24,10 @@ export default {
       },
     },
     {
-      name: "section",
+      name: "landingPage",
+      title: "Landing Page",
       type: "reference",
-      description: "Select the parent section.",
-      to: [
-        {
-          type: "section",
-        },
-      ],
-      options: {
-        filter: ({ document }) => {
-          // if the site field isn't set yet, grab the site using resolveDesk
-          if (!document.hasOwnProperty("site")) {
-            return {
-              filter: "_type == $pageType && site == $site",
-              params: {
-                site: resolveDesk(window.location.pathname),
-                pageType: "section",
-              },
-            };
-          }
-
-          //otherwise assume site field set and use that.
-          return {
-            filter: "_type == $pageType && site == $site",
-            params: { site: document.site, pageType: "section" },
-          };
-        },
-      },
-    },
-    {
-      name: "page",
-      type: "reference",
-      description: "Select the landing page for this section.",
-      to: [
-        {
-          type: "page",
-        },
-      ],
+      to: [{ type: "page" }],
       options: {
         filter: ({ document }) => {
           // Always make sure to check for document properties
@@ -81,6 +48,12 @@ export default {
           };
         },
       },
+    },
+    {
+      name: "sectionID",
+      title: "Section ID",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     },
   ],
 };

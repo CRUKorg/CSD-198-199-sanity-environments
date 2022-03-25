@@ -41,11 +41,18 @@ function filterDataToSingleItem(data, preview) {
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[defined(uid.current) && _type=="race_for_life_page"][].uid.current`;
+  const allSlugsQuery = groq`*[_type == "page" && site=="raceForLife" && section._ref in *[_type=="section" && sectionID=="home"]._id ]{
+  _id,
+  uid
+}`;
   const pages = await getClient(config).fetch(allSlugsQuery);
 
+  const paths = pages.map((slug) => {
+    return { params: { slug: slug.uid.current.split("/").pop() } };
+  });
+
   return {
-    paths: pages.map((slug) => `/${slug}`),
+    paths,
     fallback: true,
   };
 }
@@ -65,10 +72,11 @@ export async function getStaticPaths() {
  */
 export async function getStaticProps({ params, preview = false }) {
   console.log(params);
-  const query = groq`*[_type == "race_for_life_page" && uid.current == $slug]`;
-  const queryParams = { slug: params.slug };
+  const query = groq`*[_type == "page" && site=="raceForLife" && uid.current == $slug] { title, _id, uid, body}`;
+  const queryParams = { slug: `race-for-life/${params.slug}` };
+  console.log(queryParams);
   const data = await getClient(config, preview).fetch(query, queryParams);
-
+  console.log("d", data);
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };
 
