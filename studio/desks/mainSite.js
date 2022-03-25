@@ -1,6 +1,6 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { MdComputer } from "react-icons/md";
-export default () =>
+const mainSite = () =>
   S.listItem()
     .title("Main site")
     .id("mainSite")
@@ -26,4 +26,4 @@ export default () =>
             ),
         ])
     );
-//export default mainSite;
+export default mainSite;
