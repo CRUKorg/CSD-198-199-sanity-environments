@@ -40,7 +40,6 @@ function filterDataToSingleItem(data, preview) {
  * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
  */
 export async function getStaticPaths() {
-  //const allSlugsQuery = groq`*[defined(uid.current) && _type =="main_site_page"][].uid.current`;
   const allSlugsQuery = groq`*[_type == "page" && site=="mainSite" && section._ref in *[_type=="section" && sectionID=="home"]._id ]{
   _id,
   uid
