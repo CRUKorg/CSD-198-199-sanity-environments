@@ -19,17 +19,20 @@ const page = [
     to: [{ type: "section" }],
     options: {
       filter: ({ document }) => {
-        // Always make sure to check for document properties
-        // before attempting to use them
-
-        if (document.site) {
+        if (!document.hasOwnProperty("site")) {
           return {
             filter: "_type == $pageType && site == $site",
-            params: { site: document.site, pageType: "page" },
+            params: {
+              site: resolveDesk(window.location.pathname),
+              pageType: "section",
+            },
           };
-        } else {
-          return {};
         }
+
+        return {
+          filter: "_type == $pageType && site == $site",
+          params: { site: document.site, pageType: "section" },
+        };
       },
     },
   },

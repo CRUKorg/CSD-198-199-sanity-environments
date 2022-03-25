@@ -33,16 +33,22 @@ export default {
       ],
       options: {
         filter: ({ document }) => {
-          // Always make sure to check for document properties
-          // before attempting to use them
-          if (document.site) {
+          // if the site field isn't set yet, grab the site using resolveDesk
+          if (!document.hasOwnProperty("site")) {
             return {
               filter: "_type == $pageType && site == $site",
-              params: { site: document.site, pageType: "section" },
+              params: {
+                site: resolveDesk(window.location.pathname),
+                pageType: "section",
+              },
             };
-          } else {
-            return {};
           }
+
+          //otherwise assume site field set and use that.
+          return {
+            filter: "_type == $pageType && site == $site",
+            params: { site: document.site, pageType: "section" },
+          };
         },
       },
     },
@@ -59,14 +65,20 @@ export default {
         filter: ({ document }) => {
           // Always make sure to check for document properties
           // before attempting to use them
-          if (document.site) {
+          if (!document.hasOwnProperty("site")) {
             return {
               filter: "_type == $pageType && site == $site",
-              params: { site: document.site, pageType: "page" },
+              params: {
+                site: resolveDesk(window.location.pathname),
+                pageType: "page",
+              },
             };
-          } else {
-            return {};
           }
+
+          return {
+            filter: "_type == $pageType && site == $site",
+            params: { site: document.site, pageType: "page" },
+          };
         },
       },
     },
