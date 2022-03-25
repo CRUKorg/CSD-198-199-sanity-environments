@@ -23,7 +23,6 @@ const page = [
         // before attempting to use them
 
         if (document.site) {
-          console.log(document);
           return {
             filter: "_type == $pageType && site == $site",
             params: { site: document.site, pageType: "page" },

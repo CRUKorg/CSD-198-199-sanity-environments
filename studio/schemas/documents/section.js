@@ -59,7 +59,6 @@ export default {
         filter: ({ document }) => {
           // Always make sure to check for document properties
           // before attempting to use them
-          console.log(document);
           if (document.site) {
             return {
               filter: "_type == $pageType && site == $site",
