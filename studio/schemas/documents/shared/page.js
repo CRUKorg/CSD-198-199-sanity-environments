@@ -1,13 +1,6 @@
 import Body from "../../components/richText";
-//page fields
 import { resolveDesk } from "../../util";
 const page = [
-  /*{
-    title: "Site",
-    name: "site",
-    type: "string",
-    readOnly: true,
-  },*/
   {
     title: "Site",
     name: "site",
@@ -15,9 +8,6 @@ const page = [
     readOnly: true,
     initialValue: () => {
       const desk = resolveDesk(window.location.pathname);
-      /*if (!desk) {
-        throw "Error!";
-      }*/
       return desk;
     },
   },
