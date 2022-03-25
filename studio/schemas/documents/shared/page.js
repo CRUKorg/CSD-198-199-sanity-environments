@@ -6,6 +6,7 @@ const page = [
     name: "site",
     type: "string",
     readOnly: true,
+    hidden: true,
     initialValue: () => {
       const desk = resolveDesk(window.location.pathname);
       return desk;
